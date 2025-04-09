@@ -425,7 +425,7 @@
             </div>
             
             <div class="border-t border-gray-700 mt-12 pt-8">
-                <p class="text-gray-400 text-sm text-center">© 2023 Fred'Rache Staffing. All rights reserved.</p>
+                <p class="text-gray-400 text-sm text-center">© <span id="copyright-year">2021-2023</span> Fred'Rache Staffing. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -477,7 +477,24 @@
         window.addEventListener('scroll', checkScroll);
         
         // Initialize service images
+        // Update copyright year
+        function updateCopyrightYear() {
+            const startYear = 2021;
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            
+            if (copyrightElement) {
+                if (currentYear > startYear) {
+                    copyrightElement.textContent = `${startYear}-${currentYear}`;
+                } else {
+                    copyrightElement.textContent = startYear;
+                }
+            }
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
+            // Update copyright year on page load
+            updateCopyrightYear();
             // Initialize service images that are in viewport
             const serviceImages = document.querySelectorAll('.service-image');
             serviceImages.forEach(img => {

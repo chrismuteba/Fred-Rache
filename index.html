@@ -436,7 +436,7 @@
                 <div class="bg-white p-8 rounded-lg shadow-elegant-lg border border-gray-100">
                     <h2 class="text-3xl font-bold text-[#800000] font-display mb-4 relative inline-block">
                         Request Event Staff
-                        <span class="absolute bottom-0 left-0 w-full h-1 gold-gradient"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-1 gold-gradient"></span>
                     </h2>
                     
                     <p class="text-lg text-dark mb-8">Our concierge team is ready to assist with your premium staffing needs.</p>
@@ -606,7 +606,7 @@
             </div>
             
             <div class="border-t border-gray-700 mt-12 pt-8">
-                <p class="text-gray-400 text-sm text-center">© 2023 Fred'Rache Staffing. All rights reserved.</p>
+                <p class="text-gray-400 text-sm text-center">© <span id="copyright-year">2021-2023</span> Fred'Rache Staffing. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -674,8 +674,25 @@
         // Check on scroll
         window.addEventListener('scroll', checkScroll);
         
+        // Update copyright year
+        function updateCopyrightYear() {
+            const startYear = 2021;
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            
+            if (copyrightElement) {
+                if (currentYear > startYear) {
+                    copyrightElement.textContent = `${startYear}-${currentYear}`;
+                } else {
+                    copyrightElement.textContent = startYear;
+                }
+            }
+        }
+        
         // Prevent selecting past dates for event date
         document.addEventListener('DOMContentLoaded', function() {
+            // Update copyright year on page load
+            updateCopyrightYear();
             // Set min date for event date input to today
             const eventDateInput = document.getElementById('event_date');
             if (eventDateInput) {
