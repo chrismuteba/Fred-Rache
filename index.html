@@ -11,7 +11,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#880000',
+                        primary: '#800000',
                         secondary: '#D4AF37',
                         accent: '#D4AF37',
                         carpet: '#E30613',
@@ -19,18 +19,20 @@
                     },
                     fontFamily: {
                         sans: ['Montserrat', 'sans-serif'],
-                        display: ['Playfair Display', 'serif'],
+                        display: ['Playfair Display', 'DM Serif Display', 'serif'],
                     },
                     boxShadow: {
                         'elegant': '0 10px 30px -15px rgba(75, 75, 75, 0.3)',
                         'elegant-lg': '0 15px 40px -20px rgba(75, 75, 75, 0.4)',
+                        'gold': '0 5px 15px rgba(212, 175, 55, 0.3)',
+                        'gold-lg': '0 8px 25px rgba(212, 175, 55, 0.4)',
                     }
                 }
             }
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Serif+Display:wght@400&display=swap');
         
         body {
             font-family: 'Montserrat', sans-serif;
@@ -124,11 +126,73 @@
             overflow: hidden;
             z-index: -1;
         }
+        
+        /* Luxury elements */
+        .gold-border {
+            border: 1px solid #D4AF37;
+        }
+        
+        .gold-shadow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .gold-underline {
+            position: relative;
+        }
+        
+        .gold-underline::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .gold-underline:hover::after {
+            width: 100%;
+        }
+        
+        /* Fade-in animation for sections */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        /* Luxury form elements */
+        input:focus, select:focus, textarea:focus {
+            border-color: #D4AF37 !important;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2) !important;
+        }
+        
+        .luxury-button {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+            color: #800000;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .luxury-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
     </style>
 </head>
 <body class="bg-white">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-md z-50">
+    <nav class="fixed w-full bg-white shadow-elegant-lg z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center">
@@ -136,18 +200,20 @@
                         <div class="h-12 w-auto mr-2">
                             <img src="logo.jpg" alt="Fred'Rache Logo" class="h-full">
                         </div>
-                        <span class="text-primary text-2xl font-bold font-display">Fred'Rache <span class="gold-text-gradient">Staffing</span></span>
+                        <span class="text-[#800000] text-2xl font-bold font-display">Fred'Rache <span class="gold-text-gradient">Staffing</span></span>
                     </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <a href="#home" class="nav-link text-black hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
-                        <a href="#services" class="nav-link text-black hover:text-primary px-3 py-2 text-sm font-medium">Services</a>
-                        <a href="#contact" class="border-2 border-secondary hover:bg-secondary text-primary hover:text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 shadow-elegant">Contact</a>
+                        <a href="#home" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#services" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="#why-choose-us" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">Why Choose Us</a>
+                        <a href="about.html" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">About Us</a>
+                        <a href="#contact" class="border-2 border-[#D4AF37] hover:bg-[#D4AF37] text-[#800000] hover:text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 shadow-gold hover:shadow-gold-lg">Contact</a>
                     </div>
                 </div>
                 <div class="-mr-2 flex items-center md:hidden">
-                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-white hover:bg-primary focus:outline-none transition duration-150 ease-in-out">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-white hover:bg-[#800000] focus:outline-none transition duration-150 ease-in-out">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
@@ -157,11 +223,13 @@
         </div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu", class="hidden md:hidden bg-white shadow-lg">
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home", class="block px-3 py-2 text-base font-medium text-black hover:text-primary hover:bg-gray-50">Home</a>
-                <a href="#services", class="block px-3 py-2 text-base font-medium text-black hover:text-primary hover:bg-gray-50">Services</a>
-                <a href="#contact", class="block w-full text-center border-2 border-secondary text-primary px-4 py-2 rounded-md text-base font-medium mt-2 shadow-elegant">Contact</a>
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">Home</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">Services</a>
+                <a href="#why-choose-us" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">Why Choose Us</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">About Us</a>
+                <a href="#contact" class="block w-full text-center border-2 border-[#D4AF37] text-[#800000] px-4 py-2 rounded-md text-base font-medium mt-2 shadow-gold">Contact</a>
             </div>
         </div>
     </nav>
@@ -169,14 +237,14 @@
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden hero-section">
         <div class="hero-overlay absolute inset-0"></div>
-        <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-white font-display mb-2 animate-on-scroll text-shadow">Premium</h1>
-            <h1 class="text-4xl md:text-6xl font-bold gold-text-gradient font-display mb-6 animate-on-scroll text-shadow">Event Staffing</h1>
-            <p class="text-xl md:text-2xl text-white mb-4 animate-on-scroll text-shadow" style="animation-delay: 0.3s;">Exclusive staffing solutions for your most important events</p>
-            <p class="text-xl md:text-2xl text-white mb-8 animate-on-scroll text-shadow italic" style="animation-delay: 0.4s;">"Warm Welcome avec MA'JOIE"</p>
-            <div class="animate-on-scroll" style="animation-delay: 0.6s;">
-                <a href="#contact" class="floating-button inline-block bg-primary hover:bg-red-900 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-elegant-lg">
-                    Request Staff Now
+        <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center fade-in-up">
+            <h1 class="text-4xl md:text-6xl font-bold text-white font-display mb-2 text-shadow">Premium</h1>
+            <h1 class="text-4xl md:text-6xl font-bold gold-text-gradient font-display mb-6 text-shadow">Event Staffing</h1>
+            <p class="text-xl md:text-2xl text-white mb-4 text-shadow" style="animation-delay: 0.3s;">Exclusive staffing solutions for your most prestigious events</p>
+            <p class="text-xl md:text-2xl text-white mb-8 text-shadow italic" style="animation-delay: 0.4s;">"Warm Welcome avec MA'JOIE"</p>
+            <div class="mt-8" style="animation-delay: 0.6s;">
+                <a href="#contact" class="floating-button inline-block bg-[#800000] hover:bg-[#600000] text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-gold-lg border border-[#D4AF37]">
+                    Request Luxury Staff
                 </a>
             </div>
         </div>
@@ -185,16 +253,15 @@
                 <i class="fas fa-chevron-down text-2xl"></i>
             </a>
         </div>
-        
     </section>
 
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary font-display mb-4">Our Exclusive Staffing Services</h2>
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#800000] font-display mb-4">Our Luxury Staffing Services</h2>
                 <div class="w-20 h-1 gold-gradient mx-auto mb-6"></div>
-                <p class="text-lg text-dark max-w-3xl mx-auto">Professional staff for the most memorable events</p>
+                <p class="text-lg text-dark max-w-3xl mx-auto">Exceptional staff to elevate your prestigious events</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -208,9 +275,9 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <p class="text-dark mb-6">Impeccable service for your special day with our trained wedding professionals who ensure every detail is perfect.</p>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
-                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        <p class="text-dark mb-6">Great service for your wedding day with our trained staff who make sure everything runs smoothly.</p>
+                        <a href="#contact" class="inline-flex items-center text-[#800000] font-medium hover:text-[#D4AF37] gold-underline">
+                            Request Luxury Staff <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -225,9 +292,9 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <p class="text-dark mb-6">From intimate gatherings to grand celebrations, our birthday staff makes your event truly unforgettable.</p>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
-                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        <p class="text-dark mb-6">Whether it's a small party or a big celebration, our staff will help make your birthday event memorable.</p>
+                        <a href="#contact" class="inline-flex items-center text-[#800000] font-medium hover:text-[#D4AF37] gold-underline">
+                            Request Luxury Staff <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -242,9 +309,9 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <p class="text-dark mb-6">Respectful and professional staff for religious ceremonies and church events of all sizes.</p>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
-                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        <p class="text-dark mb-6">Respectful and professional staff for church events and religious ceremonies of any size.</p>
+                        <a href="#contact" class="inline-flex items-center text-[#800000] font-medium hover:text-[#D4AF37] gold-underline">
+                            Request Luxury Staff <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -259,9 +326,9 @@
                         </div>
                     </div>
                     <div class="p-6">
-                        <p class="text-dark mb-6">Tailored staffing solutions for corporate functions, galas, fundraisers, and community gatherings.</p>
-                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
-                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        <p class="text-dark mb-6">Staff for business events, galas, fundraisers, and community gatherings, customized to your needs.</p>
+                        <a href="#contact" class="inline-flex items-center text-[#800000] font-medium hover:text-[#D4AF37] gold-underline">
+                            Request Luxury Staff <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -270,138 +337,153 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section class="py-20 bg-gray-50">
+    <section id="why-choose-us" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-primary font-display mb-4">Why Choose Fred'Rache Staffing?</h2>
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#800000] font-display mb-4">Why Choose Fred'Rache Staffing?</h2>
                 <div class="w-20 h-1 gold-gradient mx-auto mb-6"></div>
-                <p class="text-lg text-dark max-w-3xl mx-auto">We provide the highest caliber event staff with white-glove service standards</p>
+                <p class="text-lg text-dark max-w-3xl mx-auto">We provide exceptional staff with unparalleled luxury service</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll">
-                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-user-shield text-primary text-2xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-gold text-center transition duration-300 hover:shadow-gold-lg fade-in-up border border-gray-100">
+                    <div class="w-16 h-16 bg-[#800000] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-gold">
+                        <i class="fas fa-user-shield text-[#800000] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-black mb-3">Elite Professionals</h3>
-                    <p class="text-dark">Our staff undergo extensive training in etiquette, customer service, and event protocols.</p>
+                    <h3 class="text-xl font-bold text-[#800000] mb-3 font-display">Elite Professionals</h3>
+                    <p class="text-dark">Our staff are meticulously trained in etiquette, exceptional customer service, and event management excellence.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll" style="animation-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-star text-primary text-2xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-gold text-center transition duration-300 hover:shadow-gold-lg fade-in-up border border-gray-100" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-[#800000] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-[#800000] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-black mb-3">Five-Star Service</h3>
-                    <p class="text-dark">We deliver exceptional service that exceeds expectations at every event.</p>
+                    <h3 class="text-xl font-bold text-[#800000] mb-3 font-display">Five-Star Service</h3>
+                    <p class="text-dark">We deliver unparalleled service that exceeds expectations at every prestigious event we staff.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll" style="animation-delay: 0.4s;">
-                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-tshirt text-primary text-2xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-gold text-center transition duration-300 hover:shadow-gold-lg fade-in-up border border-gray-100" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-[#800000] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tshirt text-[#800000] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-black mb-3">Custom Attire</h3>
-                    <p class="text-dark">Staff can wear your preferred uniforms or our premium event attire.</p>
+                    <h3 class="text-xl font-bold text-[#800000] mb-3 font-display">Elegant Attire</h3>
+                    <p class="text-dark">Staff can be dressed in your custom uniforms or our sophisticated, luxury event attire.</p>
                 </div>
                 
-                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll" style="animation-delay: 0.6s;">
-                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-hand-holding-heart text-primary text-2xl"></i>
+                <div class="bg-white p-8 rounded-lg shadow-gold text-center transition duration-300 hover:shadow-gold-lg fade-in-up border border-gray-100" style="animation-delay: 0.6s;">
+                    <div class="w-16 h-16 bg-[#800000] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-holding-heart text-[#800000] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-black mb-3">Personalized Care</h3>
-                    <p class="text-dark">Dedicated account manager for each client to ensure flawless execution.</p>
+                    <h3 class="text-xl font-bold text-[#800000] mb-3 font-display">Dedicated Concierge</h3>
+                    <p class="text-dark">Each client is assigned a personal event concierge to ensure flawless execution of your vision.</p>
                 </div>
             </div>
-            
-            <div class="mt-12 bg-primary rounded-lg shadow-elegant-lg overflow-hidden animate-on-scroll">
+            <div class="mt-12 bg-[#800000] rounded-lg shadow-gold-lg overflow-hidden fade-in-up border border-[#D4AF37]">
                 <div class="md:flex">
                     <div class="md:flex-shrink-0">
                         <img class="h-full w-full object-cover md:w-96 service-image" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Event Staff Working" loading="lazy" onload="this.classList.add('loaded')">
                     </div>
                     <div class="p-8">
-                        <div class="uppercase tracking-wide text-sm text-secondary font-semibold mb-1">Our Process</div>
+                        <div class="uppercase tracking-wide text-sm text-[#D4AF37] font-semibold mb-1 font-display">Our Luxury Process</div>
                         <h3 class="text-2xl font-bold text-white font-display mb-4">Bespoke Staffing Solutions</h3>
-                        <p class="text-gray-200 mb-6">Our concierge approach ensures perfect staffing for your event:</p>
+                        <p class="text-gray-200 mb-6">Our personalized concierge approach ensures the perfect staff for your prestigious event:</p>
                         <ol class="text-gray-200 mb-6 list-decimal pl-5">
-                            <li class="mb-2">Personalized consultation to understand your specific needs</li>
-                            <li class="mb-2">Custom staff selection tailored to your event</li>
-                            <li class="mb-2">Flawless event execution with our trained professionals</li>
+                            <li class="mb-3">We consult with you to understand your vision and specific requirements</li>
+                            <li class="mb-3">We carefully select staff who match your event's style and atmosphere</li>
+                            <li class="mb-3">We ensure flawless execution with our professionally trained luxury staff</li>
                         </ol>
-                        <a href="#contact" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary gold-gradient hover:bg-yellow-600 text-white hover:text-white transition duration-300 shadow-elegant">
-                            Begin Consultation <i class="fas fa-arrow-right ml-2"></i>
+                        <a href="#contact" class="inline-flex items-center px-6 py-3 border border-[#D4AF37] text-sm font-medium rounded-md text-[#800000] gold-gradient hover:bg-[#c9a633] text-white hover:text-white transition duration-300 shadow-gold-lg">
+                            Begin Luxury Consultation <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </section>
-
 
     <!-- Contact Form -->
     <section id="contact" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary font-display mb-6">Request Event Staff</h2>
-                    <div class="w-20 h-1 gold-gradient mb-6"></div>
-                    <p class="text-lg text-dark mb-8">Complete our concierge request form and we'll respond within 24 hours to discuss your staffing needs.</p>
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#800000] font-display mb-4">Luxury Event Staffing</h2>
+                <div class="w-20 h-1 gold-gradient mx-auto mb-6"></div>
+                <p class="text-lg text-dark max-w-3xl mx-auto">Elevate your event with our premium staffing solutions</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start animate-on-scroll">
+                <!-- Left Column - Contact Information -->
+                <div class="bg-white p-8 rounded-lg shadow-elegant-lg border border-gray-100">
+                    <h2 class="text-3xl font-bold text-[#800000] font-display mb-4 relative inline-block">
+                        Request Event Staff
+                        <span class="absolute bottom-0 left-0 w-full h-1 gold-gradient"></span>
+                    </h2>
                     
-                    <div class="space-y-6">
-                        
-                        <div class="flex items-start">
+                    <p class="text-lg text-dark mb-8">Our concierge team is ready to assist with your premium staffing needs.</p>
+                    
+                    <div class="space-y-8 mb-10">
+                        <!-- Concierge Line -->
+                        <div class="flex items-start group">
                             <div class="flex-shrink-0">
-                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
-                                    <i class="fas fa-phone-alt text-primary text-xl"></i>
+                                <div class="w-14 h-14 rounded-full bg-primary bg-opacity-10 flex items-center justify-center group-hover:shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-300">
+                                    <i class="fas fa-phone-alt text-[#800000] text-xl"></i>
                                 </div>
                             </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-black">Concierge Line</h3>
-                                <p class="text-dark">+447948080866</p>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-medium text-black font-display">Concierge Line</h3>
+                                <a href="tel:+447948080866" class="text-lg text-[#800000] hover:text-[#D4AF37] transition-colors duration-300 font-medium">+44 7948 080866</a>
                             </div>
                         </div>
                         
-                        <div class="flex items-start">
+                        <!-- Email -->
+                        <div class="flex items-start group">
                             <div class="flex-shrink-0">
-                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
-                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                <div class="w-14 h-14 rounded-full bg-primary bg-opacity-10 flex items-center justify-center group-hover:shadow-[0_0_10px_rgba(212,175,55,0.5)] transition-all duration-300">
+                                    <i class="fas fa-envelope text-[#800000] text-xl"></i>
                                 </div>
                             </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-medium text-black">Email Us</h3>
-                                <p class="text-dark">staffing@fredrache.co.uk<br>Guaranteed response within 24 hours</p>
+                            <div class="ml-5">
+                                <h3 class="text-xl font-medium text-black font-display">Email Us</h3>
+                                <a href="mailto:staffing@fredrache.co.uk" class="text-lg text-[#800000] hover:text-[#D4AF37] transition-colors duration-300 font-medium">staffing@fredrache.co.uk</a>
+                                <p class="text-dark mt-1">We'll respond within 24 hours</p>
                             </div>
                         </div>
                     </div>
                     
                     <div class="mt-10">
-                        <h3 class="text-lg font-medium text-black mb-4">Connect With Us</h3>
+                        <h3 class="text-xl font-medium text-black font-display mb-4 relative inline-block">
+                            Connect With Us
+                            <span class="absolute bottom-0 left-0 w-0 h-1 gold-gradient group-hover:w-full transition-all duration-300"></span>
+                        </h3>
                         <div class="flex space-x-4">
-                            <a href="https://www.instagram.com/fred_rache_?igsh=MzRlODBiNWFlZA==" target="_blank" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-opacity-20 transition duration-300">
-                                <i class="fab fa-instagram"></i>
+                            <a href="https://www.instagram.com/fred_rache_?igsh=MzRlODBiNWFlZA==" target="_blank" class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-[#800000] hover:text-[#D4AF37] hover:shadow-[0_0_15px_rgba(212,175,55,0.6)] transition-all duration-300">
+                                <i class="fab fa-instagram text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 p-8 rounded-lg shadow-elegant-lg">
+                <!-- Right Column - Form -->
+                <div class="bg-white p-8 rounded-lg shadow-elegant-lg border border-gray-100">
                     <form id="contact-form" class="space-y-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-black">Your Name *</label>
-                            <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                            <label for="name" class="block text-sm font-medium text-black font-display">Your Name *</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                         </div>
                         
                         <div>
-                            <label for="email", class="block text-sm font-medium text-black">Email Address *</label>
-                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                            <label for="email" class="block text-sm font-medium text-black font-display">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                         </div>
                         
                         <div>
-                            <label for="phone", class="block text-sm font-medium text-black">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                            <label for="phone" class="block text-sm font-medium text-black font-display">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                         </div>
                         
                         <div>
-                            <label for="event-type", class="block text-sm font-medium text-black">Event Type *</label>
-                            <select id="event-type" name="event-type" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                            <label for="event-type" class="block text-sm font-medium text-black font-display">Event Type *</label>
+                            <select id="event-type" name="event-type" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                                 <option value="">Select an event type</option>
                                 <option value="wedding">Wedding</option>
                                 <option value="birthday">Birthday Party</option>
@@ -410,21 +492,31 @@
                                 <option value="public">Public Event</option>
                                 <option value="other">Other</option>
                             </select>
+                            <p class="text-xs text-gray-500 mt-1">Select the type of event you're planning to help us match you with the right staff</p>
                         </div>
                         
                         <div>
-                            <label for="event-date", class="block text-sm font-medium text-black">Event Date *</label>
-                            <input type="date" id="event-date" name="event-date" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                            <label for="event-date" class="block text-sm font-medium text-black font-display">Event Date *</label>
+                            <input type="date" id="event-date" name="event-date" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                         </div>
                         
                         <div>
-                            <label for="staff-needs", class="block text-sm font-medium text-black">Staffing Needs *</label>
-                            <textarea id="staff-needs" name="staff-needs" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary" placeholder="Number of staff needed, specific roles, hours required, etc."></textarea>
+                            <label for="staff-needs" class="block text-sm font-medium text-black font-display">Staffing Needs *</label>
+                            <textarea id="staff-needs" name="staff-needs" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]" placeholder="Number of staff needed, specific roles, hours required, etc."></textarea>
+                            <p class="text-xs text-gray-500 mt-1">Please provide details about how many staff you need, their roles, and any specific requirements</p>
                         </div>
                         
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="privacy" name="privacy" type="checkbox" required class="h-4 w-4 text-[#800000] focus:ring-[#D4AF37] border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="privacy" class="text-gray-700">I agree to the <a href="#" class="text-[#800000] hover:text-[#D4AF37]">Privacy Policy</a> *</label>
+                            </div>
+                        </div>
                         
                         <div>
-                            <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-elegant text-sm font-medium text-white bg-primary hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300">
+                            <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-elegant text-sm font-medium text-[#800000] bg-[#D4AF37] hover:bg-[#c9a633] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D4AF37] transition duration-300">
                                 Submit Staffing Request <i class="fas fa-paper-plane ml-2"></i>
                             </button>
                         </div>
@@ -436,31 +528,41 @@
 
 
     <!-- Footer -->
-    <footer class="bg-primary text-white">
+    <footer class="bg-[#800000] text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold font-display mb-4">Fred'Rache Staffing</h3>
-                    <p class="text-gray-300 mb-4">Premium event staffing solutions for discerning clients.</p>
+                <div class="group">
+                    <h3 class="text-xl font-bold font-display mb-4 relative inline-block">
+                        Fred'Rache Staffing
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                    </h3>
+                    <p class="text-gray-300 mb-4">Luxury staffing solutions for your most prestigious events.</p>
                 </div>
                 
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <div class="group">
+                    <h3 class="text-lg font-bold font-display mb-4 relative inline-block">
+                        Quick Links
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                    </h3>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-white transition duration-300">Services</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a></li>
+                        <li><a href="index.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Home Page</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">About Us</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Our Services</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Contact Us</a></li>
                     </ul>
                 </div>
                 
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                <div class="group">
+                    <h3 class="text-lg font-bold font-display mb-4 relative inline-block">
+                        Services
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                    </h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Wedding Staff</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Birthday Staff</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Church Events</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Private Events</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Public Events</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Wedding Staff</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Birthday Staff</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Church Events</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Private Events</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Public Events</a></li>
                     </ul>
                 </div>
             </div>
@@ -473,19 +575,19 @@
 
     <!-- Trust Badges -->
     <div class="fixed bottom-4 left-4 z-50 hidden md:block">
-        <div class="bg-white p-3 rounded-lg shadow-elegant flex items-center space-x-2">
-            <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center">
-                <i class="fas fa-crown text-white text-xs"></i>
+        <div class="bg-white p-3 rounded-lg shadow-gold-lg flex items-center space-x-3 border border-[#D4AF37] border-opacity-30">
+            <div class="w-10 h-10 gold-gradient rounded-full flex items-center justify-center">
+                <i class="fas fa-crown text-white text-sm"></i>
             </div>
             <div>
-                <div class="flex text-yellow-400 text-xs">
+                <div class="flex text-[#D4AF37] text-xs">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <p class="text-xs text-dark">Premium Staffing Provider</p>
+                <p class="text-xs text-[#800000] font-medium font-display">Luxury Staffing Excellence</p>
             </div>
         </div>
     </div>
@@ -497,13 +599,12 @@
             menu.classList.toggle('hidden');
         });
 
-
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Here you would typically send the form data to your server
-            alert('Thank you for your staffing request! Our concierge team will contact you shortly to discuss your needs.');
+            alert('Thank you for your luxury staffing request! Our dedicated concierge team will contact you within 24 hours to discuss your prestigious event needs.');
             this.reset();
         });
 
@@ -527,8 +628,21 @@
         // Check on scroll
         window.addEventListener('scroll', checkScroll);
         
-        // Initialize service images
+        // Prevent selecting past dates for event date
         document.addEventListener('DOMContentLoaded', function() {
+            // Set min date for event date input to today
+            const eventDateInput = document.getElementById('event-date');
+            if (eventDateInput) {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                const day = String(today.getDate()).padStart(2, '0');
+                
+                const formattedToday = `${year}-${month}-${day}`;
+                eventDateInput.setAttribute('min', formattedToday);
+            }
+            
+            // Initialize service images
             // Preload critical images
             const preloadDiv = document.createElement('div');
             preloadDiv.className = 'preload-images';
