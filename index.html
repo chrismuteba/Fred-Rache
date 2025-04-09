@@ -511,7 +511,7 @@
                                 <input id="privacy" name="privacy" type="checkbox" required class="h-4 w-4 text-[#800000] focus:ring-[#D4AF37] border-gray-300 rounded">
                             </div>
                             <div class="ml-3 text-sm">
-                                <label for="privacy" class="text-gray-700">I agree to the <a href="#" class="text-[#800000] hover:text-[#D4AF37]">Privacy Policy</a> *</label>
+                                <label for="privacy" class="text-gray-700">I agree to the <a href="privacy-policy.html" class="text-[#800000] hover:text-[#D4AF37]">Privacy Policy</a> *</label>
                             </div>
                         </div>
                         
@@ -541,15 +541,27 @@
                 
                 <div class="group">
                     <h3 class="text-lg font-bold font-display mb-4 relative inline-block">
-                        Quick Links
+                        Sitemap
                         <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
                     </h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Home Page</a></li>
-                        <li><a href="about.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">About Us</a></li>
-                        <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Our Services</a></li>
-                        <li><a href="#contact" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Contact Us</a></li>
-                    </ul>
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+                        <div>
+                            <h4 class="text-[#D4AF37] text-sm font-semibold mb-2">Pages</h4>
+                            <ul class="space-y-1">
+                                <li><a href="index.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Home</a></li>
+                                <li><a href="about.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">About Us</a></li>
+                                <li><a href="privacy-policy.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-[#D4AF37] text-sm font-semibold mb-2">Sections</h4>
+                            <ul class="space-y-1">
+                                <li><a href="#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Services</a></li>
+                                <li><a href="#why-choose-us" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Why Choose Us</a></li>
+                                <li><a href="#contact" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="group">
@@ -597,6 +609,15 @@
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when menu items are clicked
+        const mobileMenuItems = document.querySelectorAll('#mobile-menu a');
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.add('hidden');
+            });
         });
 
         // Form submission
