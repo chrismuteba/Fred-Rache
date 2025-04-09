@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fred'Rache Staffing - Premium Event Staffing Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#880000',
+                        secondary: '#D4AF37',
+                        accent: '#D4AF37',
+                        carpet: '#E30613',
+                        dark: '#4B4B4B',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'elegant': '0 10px 30px -15px rgba(75, 75, 75, 0.3)',
+                        'elegant-lg': '0 15px 40px -20px rgba(75, 75, 75, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #000000;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay as specified */
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating-button {
+            animation: float 2s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+        }
+        
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Text shadow for better readability on image backgrounds */
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Image optimization for service cards */
+        .service-image {
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s ease;
+            opacity: 0;
+        }
+        
+        .service-image.loaded {
+            opacity: 1;
+        }
+        
+        /* Preload critical images */
+        .preload-images {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-auto mr-2">
+                            <img src="logo.jpg" alt="Fred'Rache Logo" class="h-full">
+                        </div>
+                        <span class="text-primary text-2xl font-bold font-display">Fred'Rache <span class="gold-text-gradient">Staffing</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="nav-link text-black hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#services" class="nav-link text-black hover:text-primary px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="#contact" class="border-2 border-secondary hover:bg-secondary text-primary hover:text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 shadow-elegant">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-white hover:bg-primary focus:outline-none transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu", class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home", class="block px-3 py-2 text-base font-medium text-black hover:text-primary hover:bg-gray-50">Home</a>
+                <a href="#services", class="block px-3 py-2 text-base font-medium text-black hover:text-primary hover:bg-gray-50">Services</a>
+                <a href="#contact", class="block w-full text-center border-2 border-secondary text-primary px-4 py-2 rounded-md text-base font-medium mt-2 shadow-elegant">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden hero-section">
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="relative z-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white font-display mb-2 animate-on-scroll text-shadow">Premium</h1>
+            <h1 class="text-4xl md:text-6xl font-bold gold-text-gradient font-display mb-6 animate-on-scroll text-shadow">Event Staffing</h1>
+            <p class="text-xl md:text-2xl text-white mb-4 animate-on-scroll text-shadow" style="animation-delay: 0.3s;">Exclusive staffing solutions for your most important events</p>
+            <p class="text-xl md:text-2xl text-white mb-8 animate-on-scroll text-shadow italic" style="animation-delay: 0.4s;">"Warm Welcome avec MA'JOIE"</p>
+            <div class="animate-on-scroll" style="animation-delay: 0.6s;">
+                <a href="#contact" class="floating-button inline-block bg-primary hover:bg-red-900 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105 shadow-elegant-lg">
+                    Request Staff Now
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 text-center">
+            <a href="#services" class="text-white animate-bounce inline-block">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+        
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary font-display mb-4">Our Exclusive Staffing Services</h2>
+                <div class="w-20 h-1 gold-gradient mx-auto mb-6"></div>
+                <p class="text-lg text-dark max-w-3xl mx-auto">Professional staff for the most memorable events</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Wedding Staff -->
+                <div class="bg-white rounded-lg shadow-elegant overflow-hidden transition duration-300 hover:shadow-elegant-lg animate-on-scroll group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wedding Staff" class="w-full h-full object-cover service-image group-hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-2xl font-bold text-white font-display">Wedding Staff</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-dark mb-6">Impeccable service for your special day with our trained wedding professionals who ensure every detail is perfect.</p>
+                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
+                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Birthday Staff -->
+                <div class="bg-white rounded-lg shadow-elegant overflow-hidden transition duration-300 hover:shadow-elegant-lg animate-on-scroll group" style="animation-delay: 0.2s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Birthday Staff" class="w-full h-full object-cover service-image group-hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-2xl font-bold text-white font-display">Birthday Staff</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-dark mb-6">From intimate gatherings to grand celebrations, our birthday staff makes your event truly unforgettable.</p>
+                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
+                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Church Event Staff -->
+                <div class="bg-white rounded-lg shadow-elegant overflow-hidden transition duration-300 hover:shadow-elegant-lg animate-on-scroll group" style="animation-delay: 0.4s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Church Event Staff" class="w-full h-full object-cover service-image group-hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-2xl font-bold text-white font-display">Church Event Staff</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-dark mb-6">Respectful and professional staff for religious ceremonies and church events of all sizes.</p>
+                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
+                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Private & Public Events -->
+                <div class="bg-white rounded-lg shadow-elegant overflow-hidden transition duration-300 hover:shadow-elegant-lg animate-on-scroll group" style="animation-delay: 0.6s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Private & Public Events" class="w-full h-full object-cover service-image group-hover:scale-110" loading="lazy" onload="this.classList.add('loaded')">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <h3 class="text-2xl font-bold text-white font-display">Private & Public Events</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-dark mb-6">Tailored staffing solutions for corporate functions, galas, fundraisers, and community gatherings.</p>
+                        <a href="#contact" class="inline-flex items-center text-primary font-medium hover:text-secondary">
+                                                    Request Staff Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary font-display mb-4">Why Choose Fred'Rache Staffing?</h2>
+                <div class="w-20 h-1 gold-gradient mx-auto mb-6"></div>
+                <p class="text-lg text-dark max-w-3xl mx-auto">We provide the highest caliber event staff with white-glove service standards</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-user-shield text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-black mb-3">Elite Professionals</h3>
+                    <p class="text-dark">Our staff undergo extensive training in etiquette, customer service, and event protocols.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-black mb-3">Five-Star Service</h3>
+                    <p class="text-dark">We deliver exceptional service that exceeds expectations at every event.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll" style="animation-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-tshirt text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-black mb-3">Custom Attire</h3>
+                    <p class="text-dark">Staff can wear your preferred uniforms or our premium event attire.</p>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-elegant text-center transition duration-300 hover:shadow-elegant-lg animate-on-scroll" style="animation-delay: 0.6s;">
+                    <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-hand-holding-heart text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-black mb-3">Personalized Care</h3>
+                    <p class="text-dark">Dedicated account manager for each client to ensure flawless execution.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 bg-primary rounded-lg shadow-elegant-lg overflow-hidden animate-on-scroll">
+                <div class="md:flex">
+                    <div class="md:flex-shrink-0">
+                        <img class="h-full w-full object-cover md:w-96 service-image" src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Event Staff Working" loading="lazy" onload="this.classList.add('loaded')">
+                    </div>
+                    <div class="p-8">
+                        <div class="uppercase tracking-wide text-sm text-secondary font-semibold mb-1">Our Process</div>
+                        <h3 class="text-2xl font-bold text-white font-display mb-4">Bespoke Staffing Solutions</h3>
+                        <p class="text-gray-200 mb-6">Our concierge approach ensures perfect staffing for your event:</p>
+                        <ol class="text-gray-200 mb-6 list-decimal pl-5">
+                            <li class="mb-2">Personalized consultation to understand your specific needs</li>
+                            <li class="mb-2">Custom staff selection tailored to your event</li>
+                            <li class="mb-2">Flawless event execution with our trained professionals</li>
+                        </ol>
+                        <a href="#contact" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary gold-gradient hover:bg-yellow-600 text-white hover:text-white transition duration-300 shadow-elegant">
+                            Begin Consultation <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary font-display mb-6">Request Event Staff</h2>
+                    <div class="w-20 h-1 gold-gradient mb-6"></div>
+                    <p class="text-lg text-dark mb-8">Complete our concierge request form and we'll respond within 24 hours to discuss your staffing needs.</p>
+                    
+                    <div class="space-y-6">
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                    <i class="fas fa-phone-alt text-primary text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-black">Concierge Line</h3>
+                                <p class="text-dark">+447948080866</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-12 h-12 rounded-full bg-primary bg-opacity-10 flex items-center justify-center">
+                                    <i class="fas fa-envelope text-primary text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-black">Email Us</h3>
+                                <p class="text-dark">staffing@fredrache.co.uk<br>Guaranteed response within 24 hours</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h3 class="text-lg font-medium text-black mb-4">Connect With Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://www.instagram.com/fred_rache_?igsh=MzRlODBiNWFlZA==" target="_blank" class="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center text-primary hover:bg-opacity-20 transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg shadow-elegant-lg">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-black">Your Name *</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        
+                        <div>
+                            <label for="email", class="block text-sm font-medium text-black">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        
+                        <div>
+                            <label for="phone", class="block text-sm font-medium text-black">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        
+                        <div>
+                            <label for="event-type", class="block text-sm font-medium text-black">Event Type *</label>
+                            <select id="event-type" name="event-type" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                                <option value="">Select an event type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="birthday">Birthday Party</option>
+                                <option value="church">Church Event</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="public">Public Event</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="event-date", class="block text-sm font-medium text-black">Event Date *</label>
+                            <input type="date" id="event-date" name="event-date" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary">
+                        </div>
+                        
+                        <div>
+                            <label for="staff-needs", class="block text-sm font-medium text-black">Staffing Needs *</label>
+                            <textarea id="staff-needs" name="staff-needs" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary" placeholder="Number of staff needed, specific roles, hours required, etc."></textarea>
+                        </div>
+                        
+                        
+                        <div>
+                            <button type="submit" class="w-full flex justify-center py-4 px-4 border border-transparent rounded-md shadow-elegant text-sm font-medium text-white bg-primary hover:bg-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition duration-300">
+                                Submit Staffing Request <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold font-display mb-4">Fred'Rache Staffing</h3>
+                    <p class="text-gray-300 mb-4">Premium event staffing solutions for discerning clients.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-white transition duration-300">Services</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Wedding Staff</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Birthday Staff</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Church Events</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Private Events</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Public Events</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8">
+                <p class="text-gray-400 text-sm text-center">© 2023 Fred'Rache Staffing. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Trust Badges -->
+    <div class="fixed bottom-4 left-4 z-50 hidden md:block">
+        <div class="bg-white p-3 rounded-lg shadow-elegant flex items-center space-x-2">
+            <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center">
+                <i class="fas fa-crown text-white text-xs"></i>
+            </div>
+            <div>
+                <div class="flex text-yellow-400 text-xs">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="text-xs text-dark">Premium Staffing Provider</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            alert('Thank you for your staffing request! Our concierge team will contact you shortly to discuss your needs.');
+            this.reset();
+        });
+
+        // Scroll animations
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('animated');
+                }
+            });
+        }
+        
+        // Initial check
+        checkScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', checkScroll);
+        
+        // Initialize service images
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload critical images
+            const preloadDiv = document.createElement('div');
+            preloadDiv.className = 'preload-images';
+            
+            const criticalImages = [
+                'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80'
+            ];
+            
+            criticalImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                preloadDiv.appendChild(img);
+            });
+            
+            document.body.appendChild(preloadDiv);
+            
+            // Initialize service images that are in viewport
+            const serviceImages = document.querySelectorAll('.service-image');
+            serviceImages.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
