@@ -485,7 +485,12 @@
                 
                 <!-- Right Column - Form -->
                 <div class="bg-white p-8 rounded-lg shadow-elegant-lg border border-gray-100">
-                    <form id="contact-form" class="space-y-6">
+                    <form id="contact-form" action="https://formspree.io/staffing@fredrache.co.uk" method="POST" class="space-y-6">
+                        <!-- Hidden fields for better email formatting -->
+                        <input type="hidden" name="_subject" value="New Staffing Request from Fred'Rache Website">
+                        <input type="hidden" name="_next" value="https://fredrache.co.uk/thank-you.html">
+                        <!-- Honeypot field to prevent spam -->
+                        <input type="text" name="_gotcha" style="display:none">
                         <div>
                             <label for="name" class="block text-sm font-medium text-black font-display">Your Name *</label>
                             <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
@@ -502,8 +507,8 @@
                         </div>
                         
                         <div>
-                            <label for="event-type" class="block text-sm font-medium text-black font-display">Event Type *</label>
-                            <select id="event-type" name="event-type" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
+                            <label for="event_type" class="block text-sm font-medium text-black font-display">Event Type *</label>
+                            <select id="event_type" name="event_type" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                                 <option value="">Select an event type</option>
                                 <option value="wedding">Wedding</option>
                                 <option value="birthday">Birthday Party</option>
@@ -516,14 +521,14 @@
                         </div>
                         
                         <div>
-                            <label for="event-date" class="block text-sm font-medium text-black font-display">Event Date *</label>
-                            <input type="date" id="event-date" name="event-date" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
+                            <label for="event_date" class="block text-sm font-medium text-black font-display">Event Date *</label>
+                            <input type="date" id="event_date" name="event_date" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
                             <p class="text-xs text-gray-500 mt-1">Please select a future date. Past dates are not available.</p>
                         </div>
                         
                         <div>
-                            <label for="staff-needs" class="block text-sm font-medium text-black font-display">Staffing Needs *</label>
-                            <textarea id="staff-needs" name="staff-needs" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]" placeholder="Number of staff needed, specific roles, hours required, etc."></textarea>
+                            <label for="staff_needs" class="block text-sm font-medium text-black font-display">Staffing Needs *</label>
+                            <textarea id="staff_needs" name="staff_needs" rows="4" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]" placeholder="Number of staff needed, specific roles, hours required, etc."></textarea>
                             <p class="text-xs text-gray-500 mt-1">Please provide details about how many staff you need, their roles, and any specific requirements</p>
                         </div>
                         
@@ -641,13 +646,12 @@
             });
         });
 
-        // Form submission
+        // Form submission with success message
         document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to your server
+            // Don't prevent default - let the form submit to Formspree
+            // But show a thank you message before the page redirects
             alert('Thank you for your luxury staffing request! Our dedicated concierge team will contact you within 24 hours to discuss your prestigious event needs.');
-            this.reset();
+            // Form will be reset automatically after submission
         });
 
         // Scroll animations
@@ -673,7 +677,7 @@
         // Prevent selecting past dates for event date
         document.addEventListener('DOMContentLoaded', function() {
             // Set min date for event date input to today
-            const eventDateInput = document.getElementById('event-date');
+            const eventDateInput = document.getElementById('event_date');
             if (eventDateInput) {
                 const today = new Date();
                 const year = today.getFullYear();
