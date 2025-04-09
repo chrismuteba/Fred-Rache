@@ -34,6 +34,26 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Serif+Display:wght@400&display=swap');
         
+        /* Date input styling for disabled dates */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            background-color: transparent;
+        }
+        
+        /* This helps with styling on mobile */
+        input[type="date"] {
+            position: relative;
+            color-scheme: light;
+        }
+        
+        /* Custom styling for disabled dates */
+        input[type="date"]::before {
+            content: attr(min) " ~ ";
+            color: transparent;
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+        }
+        
         body {
             font-family: 'Montserrat', sans-serif;
             color: #000000;
@@ -498,6 +518,7 @@
                         <div>
                             <label for="event-date" class="block text-sm font-medium text-black font-display">Event Date *</label>
                             <input type="date" id="event-date" name="event-date" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-[#800000] focus:border-[#D4AF37]">
+                            <p class="text-xs text-gray-500 mt-1">Please select a future date. Past dates are not available.</p>
                         </div>
                         
                         <div>
@@ -661,6 +682,20 @@
                 
                 const formattedToday = `${year}-${month}-${day}`;
                 eventDateInput.setAttribute('min', formattedToday);
+                
+                // Additional handling for mobile devices
+                eventDateInput.addEventListener('input', function(e) {
+                    const selectedDate = new Date(this.value);
+                    if (selectedDate < today) {
+                        // If a past date is somehow selected, reset to today
+                        this.value = formattedToday;
+                        alert('Please select a future date. Past dates are not available.');
+                    }
+                });
+                
+                // Force a refresh of the input to apply styling
+                eventDateInput.value = formattedToday;
+                eventDateInput.value = '';
             }
             
             // Initialize service images
