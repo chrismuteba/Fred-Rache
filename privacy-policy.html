@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Fred'Rache Staffing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#800000',
+                        secondary: '#D4AF37',
+                        accent: '#D4AF37',
+                        carpet: '#E30613',
+                        dark: '#4B4B4B',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Playfair Display', 'DM Serif Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'elegant': '0 10px 30px -15px rgba(75, 75, 75, 0.3)',
+                        'elegant-lg': '0 15px 40px -20px rgba(75, 75, 75, 0.4)',
+                        'gold': '0 5px 15px rgba(212, 175, 55, 0.3)',
+                        'gold-lg': '0 8px 25px rgba(212, 175, 55, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=DM+Serif+Display:wght@400&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #000000;
+            scroll-behavior: smooth;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #D4AF37;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+        }
+        
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #F4D03F 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-elegant-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-12 w-auto mr-2">
+                            <img src="logo.jpg" alt="Fred'Rache Logo" class="h-full">
+                        </div>
+                        <span class="text-[#800000] text-2xl font-bold font-display">Fred'Rache <span class="gold-text-gradient">Staffing</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="index.html#home" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="index.html#services" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="index.html#why-choose-us" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">Why Choose Us</a>
+                        <a href="about.html" class="nav-link text-black hover:text-[#800000] px-3 py-2 text-sm font-medium">About Us</a>
+                        <a href="index.html#contact" class="border-2 border-[#D4AF37] hover:bg-[#D4AF37] text-[#800000] hover:text-white px-6 py-2 rounded-md text-sm font-medium transition duration-300 shadow-gold hover:shadow-gold-lg">Contact</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-white hover:bg-[#800000] focus:outline-none transition duration-150 ease-in-out">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html#home" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">Home</a>
+                <a href="index.html#services" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">Services</a>
+                <a href="index.html#why-choose-us" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">Why Choose Us</a>
+                <a href="about.html" class="block px-3 py-2 text-base font-medium text-black hover:text-[#800000] hover:bg-gray-50">About Us</a>
+                <a href="index.html#contact" class="block w-full text-center border-2 border-[#D4AF37] text-[#800000] px-4 py-2 rounded-md text-base font-medium mt-2 shadow-gold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Privacy Policy Content -->
+    <section class="pt-32 pb-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold text-[#800000] font-display mb-4">Privacy Policy</h1>
+                <div class="w-20 h-1 gold-gradient mx-auto mb-6"></div>
+                <p class="text-lg text-dark">Last Updated: April 9, 2025</p>
+            </div>
+            
+            <div class="prose prose-lg max-w-none">
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4">1. Introduction</h2>
+                <p>Fred'Rache Staffing ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+                <p>Please read this Privacy Policy carefully. By accessing or using our services, you acknowledge that you have read, understood, and agree to be bound by all the terms of this Privacy Policy.</p>
+                
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4 mt-8">2. Information We Collect</h2>
+                <p>We may collect information about you in a variety of ways. The information we may collect includes:</p>
+                
+                <h3 class="text-xl font-bold text-[#800000] font-display mb-2 mt-6">2.1 Personal Data</h3>
+                <p>When you use our services, we may collect personally identifiable information, such as your:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Name</li>
+                    <li>Email address</li>
+                    <li>Phone number</li>
+                    <li>Event details</li>
+                    <li>Staffing requirements</li>
+                </ul>
+                
+                <h3 class="text-xl font-bold text-[#800000] font-display mb-2 mt-6">2.2 Derivative Data</h3>
+                <p>Information our servers automatically collect when you access our website, such as your IP address, browser type, operating system, access times, and the pages you have viewed.</p>
+                
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4 mt-8">3. Use of Your Information</h2>
+                <p>We may use the information we collect about you for various purposes, including to:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Provide, maintain, and improve our services</li>
+                    <li>Process your requests and transactions</li>
+                    <li>Communicate with you about our services, updates, and promotions</li>
+                    <li>Respond to your inquiries and provide customer support</li>
+                    <li>Monitor and analyze usage patterns and trends</li>
+                    <li>Protect against, identify, and prevent fraud and other illegal activity</li>
+                </ul>
+                
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4 mt-8">4. Disclosure of Your Information</h2>
+                <p>We may share information we have collected about you in certain situations. Your information may be disclosed as follows:</p>
+                
+                <h3 class="text-xl font-bold text-[#800000] font-display mb-2 mt-6">4.1 By Law or to Protect Rights</h3>
+                <p>If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</p>
+                
+                <h3 class="text-xl font-bold text-[#800000] font-display mb-2 mt-6">4.2 Third-Party Service Providers</h3>
+                <p>We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</p>
+                
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4 mt-8">5. Security of Your Information</h2>
+                <p>We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.</p>
+                
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4 mt-8">6. Your Rights</h2>
+                <p>You have the right to access, update, or delete the information we have on you. You can:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Request access to your personal data</li>
+                    <li>Request correction of your personal data</li>
+                    <li>Request deletion of your personal data</li>
+                    <li>Object to processing of your personal data</li>
+                    <li>Request restriction of processing your personal data</li>
+                </ul>
+                <p>To exercise these rights, please contact us at staffing@fredrache.co.uk.</p>
+                
+                <h2 class="text-2xl font-bold text-[#800000] font-display mb-4 mt-8">7. Contact Us</h2>
+                <p>If you have questions or concerns about this Privacy Policy, please contact us at:</p>
+                <p class="font-bold">Fred'Rache Staffing<br>
+                Email: staffing@fredrache.co.uk<br>
+                Phone: +44 7948 080866</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#800000] text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group">
+                    <h3 class="text-xl font-bold font-display mb-4 relative inline-block">
+                        Fred'Rache Staffing
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                    </h3>
+                    <p class="text-gray-300 mb-4">Luxury staffing solutions for your most prestigious events.</p>
+                </div>
+                
+                <div class="group">
+                    <h3 class="text-lg font-bold font-display mb-4 relative inline-block">
+                        Sitemap
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                    </h3>
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-2">
+                        <div>
+                            <h4 class="text-[#D4AF37] text-sm font-semibold mb-2">Pages</h4>
+                            <ul class="space-y-1">
+                                <li><a href="index.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Home</a></li>
+                                <li><a href="about.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">About Us</a></li>
+                                <li><a href="privacy-policy.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-[#D4AF37] text-sm font-semibold mb-2">Sections</h4>
+                            <ul class="space-y-1">
+                                <li><a href="index.html#services" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Services</a></li>
+                                <li><a href="index.html#why-choose-us" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Why Choose Us</a></li>
+                                <li><a href="index.html#contact" class="text-gray-300 hover:text-[#D4AF37] transition duration-300 text-sm">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group">
+                    <h3 class="text-lg font-bold font-display mb-4 relative inline-block">
+                        Legal
+                        <span class="absolute bottom-0 left-0 w-0 h-1 bg-[#D4AF37] group-hover:w-full transition-all duration-300"></span>
+                    </h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy-policy.html" class="text-gray-300 hover:text-[#D4AF37] transition duration-300">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8">
+                <p class="text-gray-400 text-sm text-center">© <span id="copyright-year">2021-2023</span> Fred'Rache Staffing. All rights reserved.</p>
+                <p class="text-gray-400 text-sm text-center mt-2">Made by <a href="https://vici-tech.net" class="text-[#D4AF37] hover:text-white transition duration-300">Vici-Tech</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Update copyright year
+        function updateCopyrightYear() {
+            const startYear = 2021;
+            const currentYear = new Date().getFullYear();
+            const copyrightElement = document.getElementById('copyright-year');
+            
+            if (copyrightElement) {
+                if (currentYear > startYear) {
+                    copyrightElement.textContent = `${startYear}-${currentYear}`;
+                } else {
+                    copyrightElement.textContent = startYear;
+                }
+            }
+        }
+        
+        // Call the function when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCopyrightYear();
+        });
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when menu items are clicked
+        const mobileMenuItems = document.querySelectorAll('#mobile-menu a');
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
